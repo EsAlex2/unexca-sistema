@@ -33,6 +33,7 @@ CREATE TABLE estudiantes (
     semestre_actual INT,
     creditos_aprobados INT DEFAULT 0,
     promedio_general DECIMAL(4,2) DEFAULT 0.00,
+    estado ENUM('activo', 'inactivo', 'pendiente') DEFAULT 'activo',
     FOREIGN KEY (usuario_id) REFERENCES usuarios(id) ON DELETE CASCADE
 );
 
@@ -166,21 +167,34 @@ CREATE TABLE mensajes (
 );
 
     -- Tabla de notificaciones
-    CREATE TABLE notificaciones (
-        id INT PRIMARY KEY AUTO_INCREMENT,
-        usuario_id INT NOT NULL,
-        tipo VARCHAR(50),
-        titulo VARCHAR(200),
-        mensaje TEXT,
-        url VARCHAR(500),
-        leido BOOLEAN DEFAULT FALSE,
-        fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-        FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
-    );
+CREATE TABLE notificaciones (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    usuario_id INT NOT NULL,
+    tipo VARCHAR(50),
+    titulo VARCHAR(200),
+    mensaje TEXT,
+    url VARCHAR(500),
+    leido BOOLEAN DEFAULT FALSE,
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+     FOREIGN KEY (usuario_id) REFERENCES usuarios(id)
+);
 
--- Insertar usuario administrador por defecto
-INSERT INTO usuarios (username, password, email, rol, estado) 
-VALUES ('admin', 'admin123', 'admin@unexca.edu.ve', 'administrador', 'activo');
+-- Tabla de solicitudes
+CREATE TABLE solicitudes (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    tipo VARCHAR(100) NOT NULL,
+    estudiante_id INT,
+    docente_id INT,
+    descripcion TEXT NOT NULL,
+    fecha_solicitud TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    fecha_resolucion DATETIME,
+    estado ENUM('pendiente', 'aprobada', 'rechazada', 'en_proceso') DEFAULT 'pendiente',
+    respuesta TEXT,
+    administrador_id INT,
+    FOREIGN KEY (estudiante_id) REFERENCES estudiantes(id),
+    FOREIGN KEY (docente_id) REFERENCES docentes(id),
+    FOREIGN KEY (administrador_id) REFERENCES usuarios(id)
+);
 
 -- Insertar algunas carreras de ejemplo
 INSERT INTO carreras (codigo, nombre, descripcion, duracion_semestres, creditos_totales, facultad) VALUES

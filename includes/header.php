@@ -126,12 +126,12 @@ $current_page = basename($_SERVER['PHP_SELF']);
                             
                         case 'administrador':
                             $menu_items = [
-                                'modules/administrativo/dashboard.php' => ['icon' => 'fas fa-home', 'text' => 'Dashboard'],
-                                'modules/estudiantes/index.php' => ['icon' => 'fas fa-users', 'text' => 'Estudiantes'],
+                                'dashboard.php' => ['icon' => 'fas fa-home', 'text' => 'Dashboard'],
+                                'estudiantes.php' => ['icon' => 'fas fa-users', 'text' => 'Estudiantes'],
                                 'docentes.php' => ['icon' => 'fas fa-chalkboard-teacher', 'text' => 'Docentes'],
                                 'cursos.php' => ['icon' => 'fas fa-book', 'text' => 'Cursos'],
                                 'secciones.php' => ['icon' => 'fas fa-layer-group', 'text' => 'Secciones'],
-                                'modules/calificaciones/libro_calificaciones.php' => ['icon' => 'fas fa-chart-bar', 'text' => 'Calificaciones'],
+                                'calificaciones.php' => ['icon' => 'fas fa-chart-bar', 'text' => 'Calificaciones'],
                                 'pagos.php' => ['icon' => 'fas fa-money-check-alt', 'text' => 'Pagos'],
                                 'reportes.php' => ['icon' => 'fas fa-chart-pie', 'text' => 'Reportes'],
                                 'configuracion.php' => ['icon' => 'fas fa-cog', 'text' => 'Configuración']

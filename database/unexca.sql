@@ -196,8 +196,29 @@ CREATE TABLE solicitudes (
     FOREIGN KEY (administrador_id) REFERENCES usuarios(id)
 );
 
+-- Tabla de departamentos
+CREATE TABLE departamentos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    codigo VARCHAR(20) UNIQUE NOT NULL,
+    nombre VARCHAR(200) NOT NULL,
+    descripcion TEXT,
+    director_id INT,
+    telefono VARCHAR(20),
+    email VARCHAR(100),
+    estado ENUM('activo', 'inactivo') DEFAULT 'activo',
+    fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (director_id) REFERENCES docentes(id)
+);
+
 -- Insertar algunas carreras de ejemplo
 INSERT INTO carreras (codigo, nombre, descripcion, duracion_semestres, creditos_totales, facultad) VALUES
 ('ING-SIS', 'Ingeniería en Sistemas', 'Carrera de ingeniería en sistemas computacionales', 10, 180, 'Ingeniería'),
 ('LIC-ADM', 'Licenciatura en Administración', 'Carrera de administración de empresas', 8, 160, 'Ciencias Económicas'),
 ('DERECHO', 'Derecho', 'Carrera de derecho y ciencias jurídicas', 10, 180, 'Ciencias Jurídicas');
+
+INSERT INTO departamentos (codigo, nombre, descripcion) VALUES
+('DEP-MAT', 'Departamento de Matemáticas', 'Departamento de ciencias matemáticas'),
+('DEP-FIS', 'Departamento de Física', 'Departamento de ciencias físicas'),
+('DEP-INF', 'Departamento de Informática', 'Departamento de ciencias de la computación'),
+('DEP-ADM', 'Departamento de Administración', 'Departamento de ciencias administrativas'),
+('DEP-DER', 'Departamento de Derecho', 'Departamento de ciencias jurídicas');

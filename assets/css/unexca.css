@@ -1,0 +1,218 @@
+/* assets/css/unexca.css */
+
+:root {
+    --unexca-blue: #0056b3;
+    --unexca-light-blue: #007bff;
+    --unexca-dark: #003366;
+    --unexca-gray: #f8f9fa;
+    --unexca-success: #28a745;
+    --unexca-warning: #ffc107;
+    --unexca-danger: #dc3545;
+    --unexca-info: #17a2b8;
+}
+
+/* Estilos generales */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+}
+
+.login-body {
+    background: linear-gradient(135deg, #003366 0%, #0056b3 100%);
+}
+
+/* Login Card */
+.login-card {
+    border-radius: 15px;
+    border: none;
+    overflow: hidden;
+}
+
+.bg-unexca {
+    background: linear-gradient(to right, var(--unexca-dark), var(--unexca-blue)) !important;
+}
+
+.logo-container {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Botones UNEXCA */
+.btn-unexca {
+    background: linear-gradient(to right, var(--unexca-blue), var(--unexca-light-blue));
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.btn-unexca:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 86, 179, 0.4);
+    color: white;
+}
+
+.btn-outline-unexca {
+    border: 2px solid var(--unexca-blue);
+    color: var(--unexca-blue);
+    background: transparent;
+}
+
+.btn-outline-unexca:hover {
+    background: var(--unexca-blue);
+    color: white;
+}
+
+/* Navbar UNEXCA */
+.navbar-unexca {
+    background: linear-gradient(to right, var(--unexca-dark), var(--unexca-blue));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand img {
+    height: 40px;
+}
+
+/* Sidebar */
+.sidebar {
+    background: white;
+    min-height: calc(100vh - 56px);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+    position: sticky;
+    top: 56px;
+    height: calc(100vh - 56px);
+    overflow-y: auto;
+}
+
+.sidebar .nav-link {
+    color: #333;
+    padding: 12px 20px;
+    margin: 2px 0;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--unexca-blue);
+    color: white;
+    transform: translateX(5px);
+}
+
+.sidebar .nav-link.active {
+    background-color: var(--unexca-blue);
+    color: white;
+    font-weight: 600;
+}
+
+.sidebar .nav-link i {
+    width: 20px;
+    text-align: center;
+    margin-right: 10px;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    border-radius: 12px 12px 0 0 !important;
+    border-bottom: none;
+    font-weight: 600;
+}
+
+/* Tablas */
+.table {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+    background: linear-gradient(to right, var(--unexca-dark), var(--unexca-blue));
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+.table tbody tr:hover {
+    background-color: rgba(0, 86, 179, 0.05);
+}
+
+/* Dashboard widgets */
+.widget {
+    border-radius: 12px;
+    padding: 20px;
+    color: white;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+}
+
+.widget:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.widget-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+.widget-2 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+.widget-3 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+.widget-4 { background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%); }
+
+.widget i {
+    font-size: 2.5rem;
+    opacity: 0.8;
+}
+
+/* Badges */
+.badge-unexca {
+    background: var(--unexca-blue);
+    color: white;
+}
+
+/* Progress bars */
+.progress {
+    height: 10px;
+    border-radius: 5px;
+    margin: 5px 0;
+}
+
+.progress-bar {
+    background: linear-gradient(to right, var(--unexca-blue), var(--unexca-light-blue));
+}
+
+/* Alertas */
+.alert-unexca {
+    border: none;
+    border-radius: 10px;
+    border-left: 5px solid var(--unexca-blue);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    /*.sidebar {
+        min-height: auto;
+    }
+    */
+    .sidebar-sticky {
+        position: relative;
+        height: auto;
+        top: 0;
+    }
+}

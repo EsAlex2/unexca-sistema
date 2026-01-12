@@ -998,8 +998,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // Inicializar DataTable
-    $('.datatable').DataTable({
-        language: {
+    /*$('.datatable').DataTable({
+        destroy: true,
+        language: { 
             url: '//cdn.datatables.net/plug-ins/1.11.5/i18n/es-ES.json'
         },
         responsive: true,
@@ -1009,7 +1010,7 @@ document.addEventListener('DOMContentLoaded', function() {
         columnDefs: [
             { orderable: false, targets: -1 } // Deshabilitar orden en columna de acciones
         ]
-    });
+    });*/
 });
 </script>
 

@@ -8,30 +8,30 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = sanitize($_POST['username']);
     $password = $_POST['password'];
-    
+
     $db = new Database();
     $conn = $db->getConnection();
-    
+
     $query = "SELECT * FROM usuarios WHERE username = :username AND estado = 'activo'";
     $stmt = $conn->prepare($query);
     $stmt->bindParam(':username', $username);
     $stmt->execute();
-    
+
     if ($stmt->rowCount() > 0) {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
-        
+
         if (password_verify($password, password_hash($password, PASSWORD_DEFAULT))) {
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['rol'] = $user['rol'];
             $_SESSION['logged_in'] = true;
-            
+
             // Actualizar último login
             $update = "UPDATE usuarios SET ultimo_login = NOW() WHERE id = :id";
             $stmt2 = $conn->prepare($update);
             $stmt2->bindParam(':id', $user['id']);
             $stmt2->execute();
-            
+
             // Redirigir según rol
             switch ($user['rol']) {
                 case 'estudiante':
@@ -57,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -68,6 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Estilos UNEXCA -->
     <link rel="stylesheet" href="assets/css/unexca.css">
 </head>
+
 <body class="login-body">
     <div class="container">
         <div class="row justify-content-center align-items-center min-vh-100">
@@ -82,14 +84,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </div>
                     <div class="card-body p-4">
                         <h4 class="text-center mb-4">Iniciar Sesión</h4>
-                        
+
                         <?php if ($error): ?>
-                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            <?php echo $error; ?>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-                        </div>
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                <?php echo $error; ?>
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                            </div>
                         <?php endif; ?>
-                        
+
                         <form method="POST" action="">
                             <div class="mb-3">
                                 <label for="username" class="form-label">
@@ -128,4 +130,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <!-- Custom JS -->
     <script src="assets/js/login.js"></script>
 </body>
+
 </html>
